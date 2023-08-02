@@ -39,7 +39,7 @@ def main():
             LIST_OF_RANDOM.append(random_int)
             i += 1
 
-    play_random_beez(MINS, LIST_OF_RANDOM)
+    play_random_beez(MINS, sorted(LIST_OF_RANDOM))
 
 
 main()
