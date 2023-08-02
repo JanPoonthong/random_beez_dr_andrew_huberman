@@ -2,8 +2,8 @@ import pygame
 import random
 import time
 
-def play_random_beez(MINS, LIST_OF_RANDOM):
 
+def play_random_beez(MINS, LIST_OF_RANDOM):
     i = 0
     count = 0
     while i < (MINS * 60):
@@ -22,11 +22,12 @@ def play_random_beez(MINS, LIST_OF_RANDOM):
         time.sleep(1)
         i += 1
 
+
 def main():
     pygame.init()
     pygame.mixer.init()
 
-    pygame.mixer.music.load('sound.mp3')
+    pygame.mixer.music.load("sound.mp3")
 
     LIST_OF_RANDOM = []
     MINS = 90
@@ -39,5 +40,6 @@ def main():
             i += 1
 
     play_random_beez(MINS, LIST_OF_RANDOM)
+
 
 main()
