@@ -32,36 +32,21 @@ def main():
 
     list_of_random = []
     minute = 90
-    gap = 10 * 60
+    gap = 3 * 60
     total_amount_of_beez = 30
 
     i = 0
-    count = 1
     random_int = gap
     while i < total_amount_of_beez:
         if random_int >= minute * 60:
             break
-        random_int = random.randint(random_int, random_int + 10)
-
-        if len(list_of_random) > 0:
-            while random_int < list_of_random[i - 1]:
-                random_int = random.randint(0, minute * 60)
-                if random_int > list_of_random[i - 1]:
-                    if random_int not in list_of_random:
-                        list_of_random.append(random_int)
-                        count += 1
-                        i += 1
-                        break
-
-            if random_int not in list_of_random:
-                list_of_random.append(random_int)
-                i += 1
-        else:
+        random_int = random.randint(random_int, random_int + gap)
+        if len(list_of_random) == 0:
             list_of_random.append(random_int)
-            count += 1
+        elif abs(random_int - list_of_random[i]) > gap:
+            list_of_random.append(random_int)
             i += 1
 
-    print(list_of_random)
     # play_random_beez(minute, list_of_random)
 
 
