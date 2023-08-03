@@ -37,7 +37,7 @@ def main():
 
     i = 0
     count = 1
-    random_int = 0
+    random_int = gap
     while i < total_amount_of_beez:
         if random_int >= minute * 60:
             break
@@ -62,7 +62,7 @@ def main():
             i += 1
 
     print(list_of_random)
-    play_random_beez(minute, list_of_random)
+    # play_random_beez(minute, list_of_random)
 
 
 main()
