@@ -3,11 +3,11 @@ import random
 import time
 
 
-def play_random_beez(MINS, LIST_OF_RANDOM):
+def play_random_beez(minute, list_of_random):
     i = 0
     count = 0
-    while i < (MINS * 60):
-        if i == LIST_OF_RANDOM[count]:
+    while i < (minute * 60):
+        if i == list_of_random[count]:
             pygame.mixer.music.play()
             pygame.event.wait()
             count += 1
@@ -17,10 +17,21 @@ def play_random_beez(MINS, LIST_OF_RANDOM):
         print("Minutes: %d" % (i / 60))
         print("**")
 
-        print(i, LIST_OF_RANDOM[count])
+        print(i, list_of_random[count])
 
         time.sleep(1)
         i += 1
+
+
+def remove_near(list_of_random):
+    temp = []
+    i = 0
+    while i < len(list_of_random) - 1:
+        if list_of_random[i + 1] - list_of_random[i] >= 180:
+            temp.append(list_of_random[i])
+        i += 1
+
+    return temp
 
 
 def main():
@@ -29,17 +40,19 @@ def main():
 
     pygame.mixer.music.load("sound.mp3")
 
-    LIST_OF_RANDOM = []
-    MINS = 90
+    list_of_random = []
+    minute = 90
 
     i = 0
     while i < 30:
-        random_int = random.randint(0, MINS * 60)
-        if random_int not in LIST_OF_RANDOM:
-            LIST_OF_RANDOM.append(random_int)
+        random_int = random.randint(180, minute * 60)
+        if random_int not in list_of_random:
+            list_of_random.append(random_int)
             i += 1
 
-    play_random_beez(MINS, sorted(LIST_OF_RANDOM))
+    list_of_random = remove_near(sorted(list_of_random))
+    print(list_of_random)
+    play_random_beez(minute, list_of_random)
 
 
 main()
